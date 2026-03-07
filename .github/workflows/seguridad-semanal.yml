@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Descargar codigo"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Configurar Node.js"
         uses: actions/setup-node@v4
@@ -92,7 +92,7 @@ jobs:
       image: semgrep/semgrep
     steps:
       - name: "Descargar codigo"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Ejecutar Semgrep completo"
         run: semgrep scan --config auto --sarif --output semgrep-results.sarif .
