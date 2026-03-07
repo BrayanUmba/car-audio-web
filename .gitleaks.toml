@@ -1,0 +1,8 @@
+title = "Configuracion de Gitleaks para car-audio-web"
+
+[allowlist]
+  description = "Archivos y patrones permitidos"
+  paths = [
+    '''\.env\.local\.example''',
+    '''package-lock\.json''',
+  ]

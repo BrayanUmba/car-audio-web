@@ -1,0 +1,113 @@
+name: "CI - Verificacion de Pull Request"
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ci-${{ github.head_ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: write
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  # ──────────────────────────────────────────────
+  # JOB 1: Calidad de codigo
+  # ──────────────────────────────────────────────
+  calidad:
+    name: "Lint + TypeScript + Build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Descargar codigo"
+        uses: actions/checkout@v4
+
+      - name: "Configurar Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: "Instalar dependencias"
+        run: npm ci
+
+      - name: "Ejecutar ESLint"
+        run: npm run lint
+
+      - name: "Verificar tipos TypeScript"
+        run: npm run type-check
+
+      - name: "Verificar build"
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: "https://placeholder.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "placeholder-key-for-build"
+
+  # ──────────────────────────────────────────────
+  # JOB 2: Auditoria de dependencias
+  # ──────────────────────────────────────────────
+  auditoria-dependencias:
+    name: "Auditoria de dependencias"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Descargar codigo"
+        uses: actions/checkout@v4
+
+      - name: "Configurar Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: "Instalar dependencias"
+        run: npm ci
+
+      - name: "Ejecutar npm audit"
+        run: npm audit --audit-level=high
+
+  # ──────────────────────────────────────────────
+  # JOB 3: Escaneo de secrets
+  # ──────────────────────────────────────────────
+  escaneo-secrets:
+    name: "Escaneo de secrets con Gitleaks"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Descargar codigo con historial completo"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "Escanear secrets con Gitleaks"
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ──────────────────────────────────────────────
+  # JOB 4: Analisis estatico de seguridad (SAST)
+  # ──────────────────────────────────────────────
+  sast:
+    name: "Analisis SAST con Semgrep"
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - name: "Descargar codigo"
+        uses: actions/checkout@v4
+
+      - name: "Ejecutar Semgrep"
+        run: semgrep scan --config auto --error --sarif --output semgrep-results.sarif ./src
+        env:
+          SEMGREP_APP_TOKEN: ""
+
+      - name: "Subir resultados SARIF"
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: semgrep-results.sarif
+        continue-on-error: true
