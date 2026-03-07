@@ -1,0 +1,42 @@
+version: 2
+updates:
+  # Dependencias de npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Bogota"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencias"
+      - "automatico"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    groups:
+      dependencias-menores:
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+          - "@supabase/*"
+      supabase:
+        patterns:
+          - "@supabase/*"
+
+  # Dependencias de GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencias"
+      - "ci"
+    commit-message:
+      prefix: "ci"
