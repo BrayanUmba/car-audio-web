@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingCart, Menu, User, LogOut } from "lucide-react";
+import { ShoppingCart, Menu, User, LogOut, Volume2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/lib/supabase/client";
+import { useCarrito } from "@/lib/carrito-context";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
@@ -19,10 +20,14 @@ import type { User as SupabaseUser } from "@supabase/supabase-js";
 const links = [
   { href: "/", label: "Inicio" },
   { href: "/productos", label: "Productos" },
+  { href: "/productos?categoria=parlantes", label: "Parlantes" },
+  { href: "/productos?categoria=amplificadores", label: "Amplificadores" },
+  { href: "/productos?categoria=subwoofers", label: "Subwoofers" },
 ];
 
 export function Navbar() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
+  const { totalItems } = useCarrito();
   const router = useRouter();
   const supabase = createClient();
 
@@ -45,30 +50,40 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full glass">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold">
-          Car Audio
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-orange-500 transition-transform group-hover:scale-110">
+            <Volume2 className="h-5 w-5 text-white" />
+          </div>
+          <span className="text-xl font-bold tracking-tight">
+            Car <span className="text-gradient">Audio</span>
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-1">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-white/5"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Link
             href="/carrito"
-            className={buttonVariants({ variant: "ghost", size: "icon" })}
+            className={`${buttonVariants({ variant: "ghost", size: "icon" })} relative`}
           >
             <ShoppingCart className="h-5 w-5" />
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-red-500 to-orange-500 text-[10px] font-bold text-white">
+                {totalItems}
+              </span>
+            )}
           </Link>
 
           {user ? (
@@ -78,7 +93,7 @@ export function Navbar() {
               >
                 <User className="h-5 w-5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="glass">
                 <DropdownMenuItem className="text-xs text-muted-foreground">
                   {user.email}
                 </DropdownMenuItem>
@@ -99,18 +114,18 @@ export function Navbar() {
 
           <Sheet>
             <SheetTrigger
-              className="md:hidden"
+              className="lg:hidden"
               render={<Button variant="ghost" size="icon" />}
             >
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col gap-4 mt-8">
+            <SheetContent side="right" className="glass">
+              <nav className="flex flex-col gap-2 mt-8">
                 {links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-lg font-medium"
+                    className="px-4 py-3 rounded-lg text-lg font-medium hover:bg-white/5 transition-colors"
                   >
                     {link.label}
                   </Link>
