@@ -40,7 +40,7 @@ export function ProductoCard({ producto }: { producto: Producto }) {
           )}
 
           {descuento > 0 && (
-            <Badge className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-orange-500 border-0 text-white font-bold shadow-lg">
+            <Badge className="absolute top-3 left-3 bg-gradient-to-r from-blue-600 to-blue-500 border-0 text-white font-bold shadow-lg">
               -{descuento}%
             </Badge>
           )}
@@ -83,7 +83,7 @@ export function ProductoCard({ producto }: { producto: Producto }) {
           {producto.stock > 0 && (
             <Button
               size="icon-sm"
-              className="bg-gradient-to-r from-red-500 to-orange-500 border-0 text-white hover:from-red-600 hover:to-orange-600 shadow-md"
+              className="bg-gradient-to-r from-blue-600 to-blue-500 border-0 text-white hover:from-blue-700 hover:to-blue-600 shadow-md"
               onClick={(e) => {
                 e.preventDefault();
                 agregarProducto(producto);

@@ -53,7 +53,7 @@ export default async function ProductosPage({
           href="/productos"
           className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
             !categoria
-              ? "bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md"
+              ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-md"
               : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
           }`}
         >
@@ -65,7 +65,7 @@ export default async function ProductosPage({
             href={`/productos?categoria=${cat.slug}`}
             className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
               categoria === cat.slug
-                ? "bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md"
+                ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-md"
                 : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
             }`}
           >

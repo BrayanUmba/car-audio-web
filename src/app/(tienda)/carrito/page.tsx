@@ -38,7 +38,7 @@ export default function CarritoPage() {
         </p>
         <Link
           href="/productos"
-          className={`${buttonVariants({ size: "lg" })} bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white px-8 h-12 font-semibold shadow-lg shadow-red-500/25`}
+          className={`${buttonVariants({ size: "lg" })} bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 border-0 text-white px-8 h-12 font-semibold shadow-lg shadow-blue-600/25`}
         >
           Ver productos
           <ArrowRight className="ml-2 h-5 w-5" />
@@ -164,7 +164,7 @@ export default function CarritoPage() {
             </div>
             <Link
               href="/checkout"
-              className={`${buttonVariants({ size: "lg" })} w-full h-12 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white font-semibold shadow-lg shadow-red-500/25`}
+              className={`${buttonVariants({ size: "lg" })} w-full h-12 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 border-0 text-white font-semibold shadow-lg shadow-blue-600/25`}
             >
               Proceder al pago
               <ArrowRight className="ml-2 h-5 w-5" />

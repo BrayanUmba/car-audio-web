@@ -27,12 +27,12 @@ export default function RegistroPage() {
     <div className="relative flex min-h-screen items-center justify-center px-4">
       <div className="absolute inset-0">
         <div className="absolute top-1/3 left-1/3 h-72 w-72 rounded-full bg-red-500/10 blur-[100px]" />
-        <div className="absolute bottom-1/3 right-1/3 h-72 w-72 rounded-full bg-orange-500/10 blur-[100px]" />
+        <div className="absolute bottom-1/3 right-1/3 h-72 w-72 rounded-full bg-blue-500/10 blur-[100px]" />
       </div>
 
       <Card className="relative w-full max-w-md border-white/5 bg-white/[0.03] backdrop-blur-xl">
         <CardHeader className="text-center space-y-4 pb-2">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-orange-500 shadow-lg shadow-red-500/25">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 shadow-lg shadow-blue-600/25">
             <Volume2 className="h-7 w-7 text-white" />
           </div>
           <CardTitle className="text-2xl font-bold">Crear cuenta</CardTitle>
@@ -81,7 +81,7 @@ export default function RegistroPage() {
               />
             </div>
             <Button
-              className="w-full h-11 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white font-semibold shadow-lg shadow-red-500/25"
+              className="w-full h-11 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 border-0 text-white font-semibold shadow-lg shadow-blue-600/25"
               disabled={loading}
             >
               {loading ? "Creando cuenta..." : "Registrarse"}
