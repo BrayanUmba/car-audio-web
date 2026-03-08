@@ -19,6 +19,10 @@ updates:
       todas-las-dependencias:
         patterns:
           - "*"
+    ignore:
+      # ESLint 10 no es compatible con eslint-config-next aún
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
 
   # Dependencias de GitHub Actions
   - package-ecosystem: "github-actions"
