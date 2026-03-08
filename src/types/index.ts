@@ -25,10 +25,31 @@ export interface Pedido {
   id: string;
   usuario_id: string;
   estado: "pendiente" | "confirmado" | "enviado" | "entregado" | "cancelado";
+  subtotal: number;
+  envio: number;
   total: number;
+  direccion_envio?: string;
+  ciudad_envio?: string;
+  telefono_contacto?: string;
+  notas?: string;
+  referencia_wompi?: string;
+  wompi_transaction_id?: string;
   items: ItemPedido[];
   created_at: string;
+  updated_at: string;
 }
+
+export interface DatosCheckout {
+  nombre: string;
+  direccion: string;
+  ciudad: string;
+  telefono: string;
+  notas?: string;
+}
+
+export type ResultadoCheckout =
+  | { error: string }
+  | { redirectUrl: string };
 
 export interface ItemPedido {
   producto_id: string;
