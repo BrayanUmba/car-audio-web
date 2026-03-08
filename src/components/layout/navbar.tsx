@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingCart, Menu, User, LogOut, Volume2, Sun, Moon } from "lucide-react";
+import { ShoppingCart, Menu, User, LogOut, Volume2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
@@ -15,7 +16,6 @@ import { createClient } from "@/lib/supabase/client";
 import { useCarrito } from "@/lib/carrito-context";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 const links = [
@@ -32,7 +32,6 @@ export function Navbar() {
   const { totalItems } = useCarrito();
   const router = useRouter();
   const supabase = createClient();
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -79,15 +78,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1">
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={buttonVariants({ variant: "ghost", size: "icon" })}
-              aria-label="Cambiar tema"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
-          )}
+          <ThemeToggle />
           <Link
             href="/carrito"
             className={`${buttonVariants({ variant: "ghost", size: "icon" })} relative`}
