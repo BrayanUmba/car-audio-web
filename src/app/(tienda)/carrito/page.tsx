@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 
 function formatPrecio(precio: number) {
@@ -64,9 +65,11 @@ export default function CarritoPage() {
               <CardContent className="flex items-center gap-4 p-4">
                 <div className="h-20 w-20 rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] overflow-hidden shrink-0">
                   {item.producto.imagenes?.[0] ? (
-                    <img
+                    <Image
                       src={item.producto.imagenes[0]}
                       alt={item.producto.nombre}
+                      width={80}
+                      height={80}
                       className="h-full w-full object-cover"
                     />
                   ) : (

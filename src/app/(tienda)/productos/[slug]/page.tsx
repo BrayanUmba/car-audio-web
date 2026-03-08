@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { AgregarCarritoBtn } from "@/components/tienda/agregar-carrito-btn";
 import { Truck, Shield, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 function formatPrecio(precio: number) {
   return new Intl.NumberFormat("es-CO", {
@@ -51,10 +52,13 @@ export default async function ProductoDetallePage({
         {/* Imagen */}
         <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] overflow-hidden relative">
           {producto.imagenes?.[0] ? (
-            <img
+            <Image
               src={producto.imagenes[0]}
               alt={producto.nombre}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
           ) : (
             <div className="flex h-full items-center justify-center text-muted-foreground">

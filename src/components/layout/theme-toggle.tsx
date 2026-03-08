@@ -2,14 +2,17 @@
 
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { buttonVariants } from "@/components/ui/button";
+
+const subscribe = () => () => {};
+function useIsMounted() {
+  return useSyncExternalStore(subscribe, () => true, () => false);
+}
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
+  const mounted = useIsMounted();
 
   if (!mounted) return <div className="h-9 w-9" />;
 

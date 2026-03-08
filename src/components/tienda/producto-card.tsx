@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -43,10 +44,12 @@ export function ProductoCard({ producto }: { producto: Producto }) {
         <div className="relative aspect-[4/3] overflow-hidden"
           style={{ background: "oklch(0.10 0.015 255)" }}>
           {producto.imagenes?.[0] ? (
-            <img
+            <Image
               src={producto.imagenes[0]}
               alt={producto.nombre}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
             />
           ) : (
             <div className="flex h-full items-center justify-center text-muted-foreground text-sm">Sin imagen</div>

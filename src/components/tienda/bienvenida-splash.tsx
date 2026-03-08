@@ -12,6 +12,7 @@ export function BienvenidaSplash() {
     if (typeof window === "undefined") return;
     const ya = sessionStorage.getItem("splash-visto");
     if (!ya) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
       const t = setTimeout(() => {
         setVisible(false);

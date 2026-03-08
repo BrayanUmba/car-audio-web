@@ -15,8 +15,13 @@ import {
 import { createClient } from "@/lib/supabase/client";
 import { useCarrito } from "@/lib/carrito-context";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
+
+const subscribe = () => () => {};
+function useIsMounted() {
+  return useSyncExternalStore(subscribe, () => true, () => false);
+}
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -28,12 +33,10 @@ const links = [
 
 export function Navbar() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsMounted();
   const { totalItems } = useCarrito();
   const router = useRouter();
   const supabase = createClient();
-
-  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
@@ -45,6 +48,8 @@ export function Navbar() {
     });
 
     return () => subscription.unsubscribe();
+  // supabase.auth es estable entre renders — no necesita estar en deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function handleLogout() {
