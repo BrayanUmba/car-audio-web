@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { login } from "./actions";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const BARS = [0.4, 0.8, 0.55, 1, 0.65, 0.9, 0.45, 0.75, 0.5, 0.95, 0.6, 0.35, 0.85, 0.7, 0.5, 0.9, 0.4, 0.6];
 const WAVES = [1, 0.7, 0.45, 0.25];
@@ -106,7 +106,8 @@ function AudioPanel({ dark }: { dark: boolean }) {
 export default function LoginPage() {
   const [error, setError]   = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [dark, setDark]     = useState(true);
+  const { resolvedTheme } = useTheme();
+  const dark = resolvedTheme !== "light";
 
   const bg   = dark ? "oklch(0.09 0.018 255)" : "oklch(0.95 0.01 240)";
   const text = dark ? "oklch(0.97 0.005 240)" : "oklch(0.10 0.02 255)";
@@ -134,16 +135,6 @@ export default function LoginPage() {
         animate={{ backgroundColor: bg }}
         transition={{ duration: 0.4 }}
       >
-        {/* Toggle claro/oscuro */}
-        <button
-          onClick={() => setDark(!dark)}
-          className="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-full transition-all"
-          style={{ background: dark ? "oklch(0.18 0.02 255)" : "oklch(0.85 0.03 240)", color: dark ? "oklch(0.70 0.14 255)" : "oklch(0.35 0.10 255)" }}
-          aria-label="Cambiar tema"
-        >
-          {dark ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
-
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
