@@ -8,6 +8,7 @@ import Link from "next/link";
 import { registro } from "./actions";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 const BARS = [0.4, 0.8, 0.55, 1, 0.65, 0.9, 0.45, 0.75, 0.5, 0.95, 0.6, 0.35, 0.85, 0.7, 0.5, 0.9, 0.4, 0.6];
 const WAVES = [1, 0.7, 0.45, 0.25];
@@ -105,8 +106,10 @@ function AudioPanel({ dark }: { dark: boolean }) {
 
 export default function RegistroPage() {
   const [error, setError] = useState<string | null>(null);
+  const [info, setInfo]   = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const { resolvedTheme } = useTheme();
+  const router = useRouter();
   const dark = resolvedTheme !== "light";
 
   const bg   = dark ? "oklch(0.09 0.018 255)" : "oklch(0.95 0.01 240)";
@@ -116,10 +119,17 @@ export default function RegistroPage() {
   async function handleSubmit(formData: FormData) {
     setLoading(true);
     setError(null);
+    setInfo(null);
     const result = await registro(formData);
     if (result?.error) {
       setError(result.error);
       setLoading(false);
+    } else if (result?.info) {
+      setInfo(result.info);
+      setLoading(false);
+    } else if (result?.redirect) {
+      router.push(result.redirect);
+      router.refresh();
     }
   }
 
@@ -167,8 +177,14 @@ export default function RegistroPage() {
           <form action={handleSubmit} className="space-y-5">
             {error && (
               <div className="rounded-xl px-4 py-3 text-sm"
-                style={{ background: "oklch(0.52 0.20 255 / 0.10)", border: "1px solid oklch(0.52 0.20 255 / 0.25)" }}>
-                <p className="text-center" style={{ color: "oklch(0.70 0.14 255)" }}>{error}</p>
+                style={{ background: "oklch(0.55 0.22 27 / 0.12)", border: "1px solid oklch(0.55 0.22 27 / 0.35)" }}>
+                <p className="text-center" style={{ color: "oklch(0.65 0.20 27)" }}>{error}</p>
+              </div>
+            )}
+            {info && (
+              <div className="rounded-xl px-4 py-3 text-sm"
+                style={{ background: "oklch(0.60 0.15 145 / 0.12)", border: "1px solid oklch(0.60 0.15 145 / 0.35)" }}>
+                <p className="text-center" style={{ color: "oklch(0.60 0.15 145)" }}>{info}</p>
               </div>
             )}
 

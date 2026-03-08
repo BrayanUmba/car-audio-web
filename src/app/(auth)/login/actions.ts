@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
 export async function login(formData: FormData) {
@@ -13,16 +12,22 @@ export async function login(formData: FormData) {
   });
 
   if (error) {
+    if (error.message.toLowerCase().includes("email not confirmed")) {
+      return { error: "Debes confirmar tu correo antes de iniciar sesión. Revisa tu bandeja de entrada." };
+    }
+    if (error.message.toLowerCase().includes("invalid login credentials")) {
+      return { error: "Correo o contraseña incorrectos." };
+    }
     return { error: error.message };
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  return { redirect: "/" };
 }
 
 export async function logout() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   revalidatePath("/", "layout");
-  redirect("/login");
+  return { redirect: "/login" };
 }
