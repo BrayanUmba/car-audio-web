@@ -22,25 +22,22 @@ const CarritoContext = createContext<CarritoContextType | null>(null);
 
 const STORAGE_KEY = "car-audio-carrito";
 
-export function CarritoProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<ItemCarrito[]>([]);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
+function getInitialItems(): ItemCarrito[] {
+  if (typeof window === "undefined") return [];
+  try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        setItems(JSON.parse(saved));
-      } catch {}
-    }
-    setLoaded(true);
-  }, []);
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function CarritoProvider({ children }: { children: React.ReactNode }) {
+  const [items, setItems] = useState<ItemCarrito[]>(getInitialItems);
 
   useEffect(() => {
-    if (loaded) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    }
-  }, [items, loaded]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
 
   function agregarProducto(producto: Producto, cantidad = 1) {
     setItems((prev) => {
