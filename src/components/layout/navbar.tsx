@@ -27,9 +27,12 @@ const links = [
 
 export function Navbar() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [mounted, setMounted] = useState(false);
   const { totalItems } = useCarrito();
   const router = useRouter();
   const supabase = createClient();
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
@@ -53,7 +56,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full glass">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-orange-500 transition-transform group-hover:scale-110">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-110" style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))" }}>
             <Volume2 className="h-5 w-5 text-white" />
           </div>
           <span className="text-xl font-bold tracking-tight">
@@ -79,8 +82,9 @@ export function Navbar() {
             className={`${buttonVariants({ variant: "ghost", size: "icon" })} relative`}
           >
             <ShoppingCart className="h-5 w-5" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-red-500 to-orange-500 text-[10px] font-bold text-white">
+            {mounted && totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-white"
+                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))" }}>
                 {totalItems}
               </span>
             )}
