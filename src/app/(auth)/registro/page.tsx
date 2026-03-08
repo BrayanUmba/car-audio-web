@@ -14,13 +14,13 @@ const BARS = [0.4, 0.8, 0.55, 1, 0.65, 0.9, 0.45, 0.75, 0.5, 0.95, 0.6, 0.35, 0.
 const WAVES = [1, 0.7, 0.45, 0.25];
 
 function AudioPanel({ dark }: { dark: boolean }) {
-  const bg   = dark ? "oklch(0.07 0.025 255)" : "oklch(0.92 0.02 240)";
-  const bar1 = dark ? "oklch(0.48 0.20 255)" : "oklch(0.42 0.18 255)";
-  const bar2 = dark ? "oklch(0.70 0.14 220)" : "oklch(0.55 0.14 220)";
-  const text = dark ? "oklch(0.97 0.005 240)" : "oklch(0.15 0.02 255)";
-  const sub  = dark ? "oklch(0.45 0.06 255)" : "oklch(0.45 0.08 255)";
-  const glow = dark ? "oklch(0.52 0.20 255 / 0.18)" : "oklch(0.52 0.20 255 / 0.10)";
-  const ring = dark ? "oklch(0.30 0.10 255 / 0.5)" : "oklch(0.60 0.12 255 / 0.4)";
+  const bg   = dark ? "oklch(0.07 0.025 295)" : "oklch(0.92 0.02 295)";
+  const bar1 = dark ? "oklch(0.48 0.20 295)" : "oklch(0.42 0.18 295)";
+  const bar2 = dark ? "oklch(0.70 0.14 300)" : "oklch(0.55 0.14 300)";
+  const text = dark ? "oklch(0.97 0.005 295)" : "oklch(0.15 0.02 295)";
+  const sub  = dark ? "oklch(0.45 0.06 295)" : "oklch(0.45 0.08 295)";
+  const glow = dark ? "oklch(0.52 0.20 295 / 0.18)" : "oklch(0.52 0.20 295 / 0.10)";
+  const ring = dark ? "oklch(0.30 0.10 295 / 0.5)" : "oklch(0.60 0.12 295 / 0.4)";
 
   return (
     <motion.div
@@ -33,7 +33,7 @@ function AudioPanel({ dark }: { dark: boolean }) {
     >
       {/* Rejilla */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{ backgroundImage: "linear-gradient(oklch(0.52 0.20 255) 1px,transparent 1px),linear-gradient(90deg,oklch(0.52 0.20 255) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+        style={{ backgroundImage: "linear-gradient(oklch(0.52 0.20 295) 1px,transparent 1px),linear-gradient(90deg,oklch(0.52 0.20 295) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
 
       {/* Resplandor */}
       <div className="absolute inset-0 pointer-events-none"
@@ -85,7 +85,7 @@ function AudioPanel({ dark }: { dark: boolean }) {
         {WAVES.map((s, i) => (
           <motion.div key={i}
             className="absolute rounded-full border"
-            style={{ borderColor: `oklch(0.52 0.20 255 / ${0.25 - i * 0.05})` }}
+            style={{ borderColor: `oklch(0.52 0.20 295 / ${0.25 - i * 0.05})` }}
             animate={{ scale: [s, s + 0.3], opacity: [0.6, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.45, ease: "easeOut" }}
             initial={{ width: 40, height: 40 }}
@@ -112,9 +112,9 @@ export default function RegistroPage() {
   const router = useRouter();
   const dark = resolvedTheme !== "light";
 
-  const bg   = dark ? "oklch(0.09 0.018 255)" : "oklch(0.95 0.01 240)";
-  const text = dark ? "oklch(0.97 0.005 240)" : "oklch(0.10 0.02 255)";
-  const sub  = dark ? "oklch(0.55 0.04 255)"  : "oklch(0.40 0.05 255)";
+  const bg   = dark ? "oklch(0.09 0.018 295)" : "oklch(0.95 0.01 295)";
+  const text = dark ? "oklch(0.97 0.005 295)" : "oklch(0.10 0.02 295)";
+  const sub  = dark ? "oklch(0.55 0.04 295)"  : "oklch(0.40 0.05 295)";
 
   async function handleSubmit(formData: FormData) {
     setLoading(true);
@@ -157,7 +157,7 @@ export default function RegistroPage() {
           {/* Logo mobile */}
           <div className="flex items-center gap-3 lg:hidden">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl"
-              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))" }}>
+              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.64 0.17 295))" }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M3 18L3 10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                 <path d="M7 18L7 5"  stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
@@ -166,7 +166,7 @@ export default function RegistroPage() {
                 <path d="M21 18L21 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
               </svg>
             </div>
-            <span className="text-lg font-bold" style={{ color: text }}>Car <span style={{ background: "linear-gradient(135deg,oklch(0.48 0.20 255),oklch(0.64 0.17 255))", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>Audio</span></span>
+            <span className="text-lg font-bold" style={{ color: text }}>Car <span style={{ background: "linear-gradient(135deg,oklch(0.48 0.20 295),oklch(0.64 0.17 295))", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>Audio</span></span>
           </div>
 
           <div>
@@ -211,7 +211,7 @@ export default function RegistroPage() {
 
             <Button type="submit" disabled={loading}
               className="w-full h-12 font-semibold rounded-xl border-0 text-white"
-              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))", boxShadow: "0 4px 20px oklch(0.52 0.20 255 / 0.35)" }}
+              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))", boxShadow: "0 4px 20px oklch(0.52 0.20 295 / 0.35)" }}
             >
               {loading ? (
                 <span className="flex items-center gap-2">
@@ -226,7 +226,7 @@ export default function RegistroPage() {
           <p className="text-center text-sm" style={{ color: sub }}>
             ¿Ya tienes cuenta?{" "}
             <Link href="/login" className="font-medium hover:underline"
-              style={{ color: "oklch(0.64 0.17 255)" }}>
+              style={{ color: "oklch(0.64 0.17 295)" }}>
               Inicia sesión
             </Link>
           </p>

@@ -9,7 +9,7 @@ export function PromoBanner() {
   if (!visible) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 animate-gradient text-white">
+    <div className="relative bg-gradient-to-r from-purple-500 via-blue-500 to-purple-700 animate-gradient text-white">
       <div className="container mx-auto flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium">
         <Zap className="h-4 w-4 animate-pulse" />
         <span>

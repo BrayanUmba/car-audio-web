@@ -30,7 +30,7 @@ export function AgregarCarritoBtn({
           ? "bg-green-600 hover:bg-green-600 shadow-green-500/25"
           : disabled
             ? ""
-            : "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-blue-600/25"
+            : "bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-500 hover:to-purple-700 shadow-purple-600/25"
       }`}
       disabled={disabled}
       onClick={handleClick}

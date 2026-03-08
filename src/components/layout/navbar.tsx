@@ -62,7 +62,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full glass">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-110" style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))" }}>
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-110" style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.64 0.17 295))" }}>
             <Volume2 className="h-5 w-5 text-white" />
           </div>
           <span className="text-xl font-bold tracking-tight">
@@ -91,7 +91,7 @@ export function Navbar() {
             <ShoppingCart className="h-5 w-5" />
             {mounted && totalItems > 0 && (
               <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-white"
-                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))" }}>
+                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.64 0.17 295))" }}>
                 {totalItems}
               </span>
             )}

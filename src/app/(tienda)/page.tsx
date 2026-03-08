@@ -10,11 +10,11 @@ import {
 import { motion } from "framer-motion";
 
 const categorias = [
-  { nombre: "Parlantes",      slug: "parlantes",      icon: Volume2,    descripcion: "Sonido cristalino",  color: "from-blue-500 to-blue-700",    glow: "oklch(0.52 0.20 255 / 0.25)" },
-  { nombre: "Amplificadores", slug: "amplificadores", icon: Zap,        descripcion: "Potencia máxima",    color: "from-blue-600 to-indigo-700",  glow: "oklch(0.45 0.20 280 / 0.25)" },
-  { nombre: "Subwoofers",     slug: "subwoofers",     icon: Speaker,    descripcion: "Bajos profundos",    color: "from-indigo-500 to-blue-600",  glow: "oklch(0.50 0.18 265 / 0.25)" },
-  { nombre: "Radios",         slug: "radios",         icon: Radio,      descripcion: "Multimedia total",   color: "from-sky-500 to-blue-600",     glow: "oklch(0.60 0.16 240 / 0.25)" },
-  { nombre: "Accesorios",     slug: "accesorios",     icon: Headphones, descripcion: "Complementos pro",   color: "from-blue-400 to-cyan-500",    glow: "oklch(0.65 0.14 220 / 0.25)" },
+  { nombre: "Parlantes",      slug: "parlantes",      icon: Volume2,    descripcion: "Sonido cristalino",  color: "from-purple-500 to-purple-700",    glow: "oklch(0.52 0.20 295 / 0.25)" },
+  { nombre: "Amplificadores", slug: "amplificadores", icon: Zap,        descripcion: "Potencia máxima",    color: "from-purple-500 to-purple-800",  glow: "oklch(0.45 0.20 280 / 0.25)" },
+  { nombre: "Subwoofers",     slug: "subwoofers",     icon: Speaker,    descripcion: "Bajos profundos",    color: "from-purple-600 to-purple-700",  glow: "oklch(0.50 0.18 295 / 0.25)" },
+  { nombre: "Radios",         slug: "radios",         icon: Radio,      descripcion: "Multimedia total",   color: "from-purple-500 to-purple-700",     glow: "oklch(0.60 0.16 295 / 0.25)" },
+  { nombre: "Accesorios",     slug: "accesorios",     icon: Headphones, descripcion: "Complementos pro",   color: "from-purple-500 to-purple-500",    glow: "oklch(0.65 0.14 300 / 0.25)" },
 ];
 
 const beneficios = [
@@ -43,12 +43,12 @@ export default function HomePage() {
         {/* Fondo */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 h-full w-full"
-            style={{ background: "radial-gradient(ellipse 80% 60% at 20% 50%, oklch(0.52 0.20 255 / 0.10) 0%, transparent 60%)" }} />
+            style={{ background: "radial-gradient(ellipse 80% 60% at 20% 50%, oklch(0.52 0.20 295 / 0.10) 0%, transparent 60%)" }} />
           <div className="absolute top-0 right-0 h-full w-full"
-            style={{ background: "radial-gradient(ellipse 60% 50% at 80% 30%, oklch(0.64 0.17 255 / 0.07) 0%, transparent 55%)" }} />
+            style={{ background: "radial-gradient(ellipse 60% 50% at 80% 30%, oklch(0.64 0.17 295 / 0.07) 0%, transparent 55%)" }} />
           {/* Grid */}
           <div className="absolute inset-0 opacity-[0.025]"
-            style={{ backgroundImage: "linear-gradient(oklch(0.64 0.17 255) 1px, transparent 1px), linear-gradient(90deg, oklch(0.64 0.17 255) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+            style={{ backgroundImage: "linear-gradient(oklch(0.64 0.17 295) 1px, transparent 1px), linear-gradient(90deg, oklch(0.64 0.17 295) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
 
         <div className="relative container mx-auto px-4">
@@ -58,7 +58,7 @@ export default function HomePage() {
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                 <Badge className="mb-6 px-4 py-1.5 gap-1.5 text-sm font-medium"
-                  style={{ background: "oklch(0.52 0.20 255 / 0.12)", border: "1px solid oklch(0.52 0.20 255 / 0.25)", color: "oklch(0.72 0.14 255)" }}>
+                  style={{ background: "oklch(0.52 0.20 295 / 0.12)", border: "1px solid oklch(0.52 0.20 295 / 0.25)", color: "oklch(0.72 0.14 295)" }}>
                   <Zap className="h-3.5 w-3.5" />
                   Nuevos productos disponibles
                 </Badge>
@@ -67,7 +67,7 @@ export default function HomePage() {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
                 Lleva tu{" "}
                 <span style={{
-                  background: "linear-gradient(135deg, oklch(0.64 0.17 255), oklch(0.75 0.12 215))",
+                  background: "linear-gradient(135deg, oklch(0.64 0.17 295), oklch(0.75 0.12 300))",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                 }}>sonido</span>
                 <br />al siguiente nivel
@@ -81,12 +81,12 @@ export default function HomePage() {
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <Link href="/productos"
                   className={`${buttonVariants({ size: "lg" })} border-0 text-white px-8 h-12 text-base font-semibold shadow-lg`}
-                  style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))", boxShadow: "0 4px 24px oklch(0.52 0.20 255 / 0.40)" }}>
+                  style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))", boxShadow: "0 4px 24px oklch(0.52 0.20 295 / 0.40)" }}>
                   Ver catálogo <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link href="#categorias"
                   className={`${buttonVariants({ variant: "outline", size: "lg" })} h-12 px-8 text-base`}
-                  style={{ borderColor: "oklch(0.52 0.20 255 / 0.30)", background: "oklch(0.52 0.20 255 / 0.05)" }}>
+                  style={{ borderColor: "oklch(0.52 0.20 295 / 0.30)", background: "oklch(0.52 0.20 295 / 0.05)" }}>
                   Explorar categorías
                 </Link>
               </div>
@@ -100,7 +100,7 @@ export default function HomePage() {
                 ].map((stat, i) => (
                   <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.1 }}>
                     <p className="text-2xl sm:text-3xl font-black"
-                      style={{ background: "linear-gradient(135deg, oklch(0.64 0.17 255), oklch(0.75 0.12 215))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                      style={{ background: "linear-gradient(135deg, oklch(0.64 0.17 295), oklch(0.75 0.12 300))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                       {stat.valor}
                     </p>
                     <p className="mt-0.5 text-xs text-muted-foreground">{stat.label}</p>
@@ -121,8 +121,8 @@ export default function HomePage() {
                     className="absolute rounded-full border"
                     style={{
                       width: `${420 * s}px`, height: `${420 * s}px`,
-                      borderColor: `oklch(0.52 0.20 255 / ${0.08 + i * 0.04})`,
-                      background: i === 2 ? "oklch(0.52 0.20 255 / 0.03)" : "transparent",
+                      borderColor: `oklch(0.52 0.20 295 / ${0.08 + i * 0.04})`,
+                      background: i === 2 ? "oklch(0.52 0.20 295 / 0.03)" : "transparent",
                     }}
                     animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
                     transition={{ duration: 20 + i * 8, repeat: Infinity, ease: "linear" }}
@@ -131,11 +131,11 @@ export default function HomePage() {
 
                 {/* Ecualizador central */}
                 <div className="relative z-10 rounded-3xl p-10 flex flex-col items-center gap-6"
-                  style={{ background: "oklch(0.12 0.02 255 / 0.8)", backdropFilter: "blur(20px)", border: "1px solid oklch(1 0 0 / 0.07)", boxShadow: "0 0 80px oklch(0.52 0.20 255 / 0.20)" }}>
+                  style={{ background: "oklch(0.12 0.02 295 / 0.8)", backdropFilter: "blur(20px)", border: "1px solid oklch(1 0 0 / 0.07)", boxShadow: "0 0 80px oklch(0.52 0.20 295 / 0.20)" }}>
 
                   {/* Logo */}
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl"
-                    style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))", boxShadow: "0 0 40px oklch(0.52 0.20 255 / 0.50)" }}>
+                    style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.64 0.17 295))", boxShadow: "0 0 40px oklch(0.52 0.20 295 / 0.50)" }}>
                     <Volume2 className="h-8 w-8 text-white" />
                   </div>
 
@@ -144,7 +144,7 @@ export default function HomePage() {
                     {BARS.map((h, i) => (
                       <motion.div key={i}
                         className="w-2.5 rounded-t"
-                        style={{ background: `linear-gradient(to top, oklch(0.48 0.20 255), oklch(0.70 0.14 220))`, originY: 1 }}
+                        style={{ background: `linear-gradient(to top, oklch(0.48 0.20 295), oklch(0.70 0.14 300))`, originY: 1 }}
                         animate={{ scaleY: [h * 0.3, h, h * 0.5, h * 0.9, h * 0.2, h] }}
                         transition={{ duration: 0.5 + (i % 5) * 0.1, repeat: Infinity, delay: i * 0.05, ease: "easeInOut" }}
                         initial={{ height: 80 * h }}
@@ -160,10 +160,10 @@ export default function HomePage() {
                   <motion.div key={i}
                     className="absolute h-2.5 w-2.5 rounded-full"
                     style={{
-                      background: `oklch(${0.50 + i * 0.04} 0.18 ${255 - i * 8})`,
+                      background: `oklch(${0.50 + i * 0.04} 0.18 ${295 - i * 5})`,
                       top: "50%", left: "50%",
                       transformOrigin: "0 0",
-                      boxShadow: `0 0 8px oklch(0.52 0.20 255 / 0.6)`,
+                      boxShadow: `0 0 8px oklch(0.52 0.20 295 / 0.6)`,
                     }}
                     animate={{ rotate: [deg, deg + 360] }}
                     transition={{ duration: 12 + i * 2, repeat: Infinity, ease: "linear" }}
@@ -181,7 +181,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
             <motion.p variants={fadeUp} custom={0} className="text-sm font-medium tracking-[0.2em] uppercase mb-3"
-              style={{ color: "oklch(0.64 0.17 255)" }}>
+              style={{ color: "oklch(0.64 0.17 295)" }}>
               Catálogo
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="text-3xl sm:text-5xl font-black">Explora por categoría</motion.h2>
@@ -196,7 +196,7 @@ export default function HomePage() {
                 <Link href={`/productos?categoria=${cat.slug}`} className="group block">
                   <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2"
                     style={{
-                      background: "oklch(0.13 0.018 255 / 0.7)",
+                      background: "oklch(0.13 0.018 295 / 0.7)",
                       backdropFilter: "blur(12px)",
                       border: "1px solid oklch(1 0 0 / 0.06)",
                     }}>
@@ -229,11 +229,11 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <div className="relative overflow-hidden rounded-3xl p-8 sm:p-12 lg:p-16"
-              style={{ background: "linear-gradient(135deg, oklch(0.25 0.15 255), oklch(0.42 0.20 255) 50%, oklch(0.32 0.18 265))" }}>
+              style={{ background: "linear-gradient(135deg, oklch(0.25 0.15 295), oklch(0.42 0.20 295) 50%, oklch(0.32 0.18 295))" }}>
               {/* Efectos */}
               <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 h-full w-1/2"
-                  style={{ background: "radial-gradient(ellipse 80% 80% at 80% 50%, oklch(0.70 0.12 215 / 0.25) 0%, transparent 60%)" }} />
+                  style={{ background: "radial-gradient(ellipse 80% 80% at 80% 50%, oklch(0.70 0.12 300 / 0.25) 0%, transparent 60%)" }} />
                 <div className="absolute inset-0 opacity-[0.04]"
                   style={{ backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
                 {/* Ecualizador decorativo */}
@@ -255,7 +255,7 @@ export default function HomePage() {
                 </div>
                 <Link href="/productos?categoria=amplificadores"
                   className="shrink-0 inline-flex h-14 items-center gap-2 rounded-2xl bg-white px-10 font-bold text-lg shadow-2xl hover:bg-white/90 transition-all hover:scale-105"
-                  style={{ color: "oklch(0.36 0.18 255)" }}>
+                  style={{ color: "oklch(0.36 0.18 295)" }}>
                   Comprar ahora <ArrowRight className="h-5 w-5" />
                 </Link>
               </div>
@@ -269,7 +269,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
             <motion.p variants={fadeUp} custom={0} className="text-sm font-medium tracking-[0.2em] uppercase mb-3"
-              style={{ color: "oklch(0.64 0.17 255)" }}>
+              style={{ color: "oklch(0.64 0.17 295)" }}>
               Por qué elegirnos
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="text-3xl sm:text-5xl font-black">Todo incluido</motion.h2>
@@ -280,18 +280,18 @@ export default function HomePage() {
               <motion.div key={b.titulo} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}>
                 <div className="group relative overflow-hidden rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1"
                   style={{
-                    background: "oklch(0.13 0.018 255 / 0.6)",
+                    background: "oklch(0.13 0.018 295 / 0.6)",
                     backdropFilter: "blur(12px)",
                     border: "1px solid oklch(1 0 0 / 0.06)",
                   }}>
                   <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.6), transparent)" }} />
+                    style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 295 / 0.6), transparent)" }} />
 
                   <span className="text-5xl font-black opacity-[0.06] absolute top-4 right-5 select-none">{b.num}</span>
 
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl mb-5"
-                    style={{ background: "oklch(0.52 0.20 255 / 0.15)", border: "1px solid oklch(0.52 0.20 255 / 0.20)" }}>
-                    <b.icon className="h-5 w-5" style={{ color: "oklch(0.64 0.17 255)" }} />
+                    style={{ background: "oklch(0.52 0.20 295 / 0.15)", border: "1px solid oklch(0.52 0.20 295 / 0.20)" }}>
+                    <b.icon className="h-5 w-5" style={{ color: "oklch(0.64 0.17 295)" }} />
                   </div>
                   <h3 className="font-bold text-lg mb-2">{b.titulo}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
@@ -307,18 +307,18 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             className="relative overflow-hidden rounded-3xl text-center py-20 px-6"
-            style={{ background: "oklch(0.13 0.018 255 / 0.7)", backdropFilter: "blur(20px)", border: "1px solid oklch(1 0 0 / 0.06)" }}>
+            style={{ background: "oklch(0.13 0.018 295 / 0.7)", backdropFilter: "blur(20px)", border: "1px solid oklch(1 0 0 / 0.06)" }}>
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute inset-0"
-                style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, oklch(0.52 0.20 255 / 0.08) 0%, transparent 70%)" }} />
+                style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, oklch(0.52 0.20 295 / 0.08) 0%, transparent 70%)" }} />
               <div className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.5), transparent)" }} />
+                style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 295 / 0.5), transparent)" }} />
               <div className="absolute bottom-0 left-0 right-0 h-px"
-                style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.3), transparent)" }} />
+                style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 295 / 0.3), transparent)" }} />
             </div>
             <div className="relative">
               <p className="text-sm font-medium tracking-[0.2em] uppercase mb-4"
-                style={{ color: "oklch(0.64 0.17 255)" }}>
+                style={{ color: "oklch(0.64 0.17 295)" }}>
                 Empieza hoy
               </p>
               <h2 className="text-3xl sm:text-5xl font-black mb-4">¿Listo para mejorar tu sonido?</h2>
@@ -327,7 +327,7 @@ export default function HomePage() {
               </p>
               <Link href="/productos"
                 className={`${buttonVariants({ size: "lg" })} border-0 text-white px-12 h-14 text-base font-semibold`}
-                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))", boxShadow: "0 4px 32px oklch(0.52 0.20 255 / 0.45)" }}>
+                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))", boxShadow: "0 4px 32px oklch(0.52 0.20 295 / 0.45)" }}>
                 Ver todos los productos <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>
