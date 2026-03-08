@@ -30,19 +30,19 @@ export function ProductoCard({ producto }: { producto: Producto }) {
       transition={{ duration: 0.25, ease: "easeOut" }}
       className="group relative flex flex-col overflow-hidden rounded-2xl h-full"
       style={{
-        background: "oklch(0.13 0.018 255 / 0.7)",
+        background: "oklch(0.13 0.018 295 / 0.7)",
         backdropFilter: "blur(12px)",
         border: "1px solid oklch(1 0 0 / 0.07)",
       }}
     >
       {/* Borde superior glow al hover */}
       <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-        style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.7), transparent)" }} />
+        style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 295 / 0.7), transparent)" }} />
 
       {/* Imagen */}
       <Link href={`/productos/${producto.slug}`} className="block">
         <div className="relative aspect-[4/3] overflow-hidden"
-          style={{ background: "oklch(0.10 0.015 255)" }}>
+          style={{ background: "oklch(0.10 0.015 295)" }}>
           {producto.imagenes?.[0] ? (
             <Image
               src={producto.imagenes[0]}
@@ -57,13 +57,13 @@ export function ProductoCard({ producto }: { producto: Producto }) {
 
           {/* Overlay gradiente al hover */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{ background: "linear-gradient(to top, oklch(0.09 0.018 255 / 0.6) 0%, transparent 50%)" }} />
+            style={{ background: "linear-gradient(to top, oklch(0.09 0.018 295 / 0.6) 0%, transparent 50%)" }} />
 
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
             {descuento > 0 && (
               <Badge className="font-bold text-white border-0 shadow-lg"
-                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))" }}>
+                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))" }}>
                 -{descuento}%
               </Badge>
             )}
@@ -77,9 +77,9 @@ export function ProductoCard({ producto }: { producto: Producto }) {
 
           {producto.stock === 0 && (
             <div className="absolute inset-0 flex items-center justify-center"
-              style={{ background: "oklch(0.05 0.01 255 / 0.75)", backdropFilter: "blur(2px)" }}>
+              style={{ background: "oklch(0.05 0.01 295 / 0.75)", backdropFilter: "blur(2px)" }}>
               <span className="rounded-full px-4 py-1.5 text-sm font-semibold text-white"
-                style={{ background: "oklch(0.20 0.02 255 / 0.90)", border: "1px solid oklch(1 0 0 / 0.15)" }}>
+                style={{ background: "oklch(0.20 0.02 295 / 0.90)", border: "1px solid oklch(1 0 0 / 0.15)" }}>
                 Agotado
               </span>
             </div>
@@ -109,7 +109,7 @@ export function ProductoCard({ producto }: { producto: Producto }) {
             {producto.precio_oferta ? (
               <div className="flex flex-col">
                 <span className="text-lg font-black"
-                  style={{ background: "linear-gradient(135deg, oklch(0.64 0.17 255), oklch(0.75 0.12 215))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  style={{ background: "linear-gradient(135deg, oklch(0.64 0.17 295), oklch(0.75 0.12 300))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                   {formatPrecio(producto.precio_oferta)}
                 </span>
                 <span className="text-xs text-muted-foreground line-through">
@@ -127,7 +127,7 @@ export function ProductoCard({ producto }: { producto: Producto }) {
             <Button
               size="icon"
               className="shrink-0 h-9 w-9 rounded-xl border-0 text-white shadow-md transition-all hover:scale-110"
-              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))", boxShadow: "0 4px 12px oklch(0.52 0.20 255 / 0.35)" }}
+              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))", boxShadow: "0 4px 12px oklch(0.52 0.20 295 / 0.35)" }}
               onClick={(e) => {
                 e.preventDefault();
                 agregarProducto(producto);

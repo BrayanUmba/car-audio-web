@@ -29,19 +29,19 @@ export function BienvenidaSplash() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
-          style={{ background: "oklch(0.07 0.02 255)" }}
+          style={{ background: "oklch(0.07 0.02 295)" }}
         >
           {/* Resplandor de fondo */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full"
-              style={{ background: "radial-gradient(circle, oklch(0.52 0.20 255 / 0.15) 0%, transparent 70%)" }} />
+              style={{ background: "radial-gradient(circle, oklch(0.52 0.20 295 / 0.15) 0%, transparent 70%)" }} />
           </div>
 
           {/* Línea de scan */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <motion.div
               className="absolute inset-x-0 h-px"
-              style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.6), transparent)" }}
+              style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 295 / 0.6), transparent)" }}
               animate={{ y: ["0vh", "100vh"] }}
               transition={{ duration: 2, ease: "linear", repeat: Infinity }}
             />
@@ -57,8 +57,8 @@ export function BienvenidaSplash() {
             {/* Ícono */}
             <motion.div
               className="flex h-24 w-24 items-center justify-center rounded-3xl"
-              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))", boxShadow: "0 0 60px oklch(0.52 0.20 255 / 0.5)" }}
-              animate={{ boxShadow: ["0 0 40px oklch(0.52 0.20 255 / 0.4)", "0 0 80px oklch(0.52 0.20 255 / 0.7)", "0 0 40px oklch(0.52 0.20 255 / 0.4)"] }}
+              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.64 0.17 295))", boxShadow: "0 0 60px oklch(0.52 0.20 295 / 0.5)" }}
+              animate={{ boxShadow: ["0 0 40px oklch(0.52 0.20 295 / 0.4)", "0 0 80px oklch(0.52 0.20 295 / 0.7)", "0 0 40px oklch(0.52 0.20 295 / 0.4)"] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* Icono de ondas de sonido SVG */}
@@ -81,7 +81,7 @@ export function BienvenidaSplash() {
               >
                 Car{" "}
                 <span style={{
-                  background: "linear-gradient(135deg, oklch(0.64 0.17 255), oklch(0.75 0.12 215))",
+                  background: "linear-gradient(135deg, oklch(0.64 0.17 295), oklch(0.75 0.12 300))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -91,7 +91,7 @@ export function BienvenidaSplash() {
               </motion.h1>
               <motion.p
                 className="mt-2 text-sm tracking-[0.25em] uppercase"
-                style={{ color: "oklch(0.60 0.03 255)" }}
+                style={{ color: "oklch(0.60 0.03 295)" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
@@ -113,7 +113,7 @@ export function BienvenidaSplash() {
                 key={i}
                 className="w-2 rounded-t-sm"
                 style={{
-                  background: `linear-gradient(to top, oklch(0.48 0.20 255), oklch(0.70 0.14 220))`,
+                  background: `linear-gradient(to top, oklch(0.48 0.20 295), oklch(0.70 0.14 300))`,
                   originY: 1,
                 }}
                 animate={{ scaleY: [h * 0.4, h, h * 0.5, h * 0.8, h * 0.3, h] }}
@@ -131,7 +131,7 @@ export function BienvenidaSplash() {
           {/* Bienvenido */}
           <motion.p
             className="absolute bottom-8 text-xs tracking-[0.3em] uppercase"
-            style={{ color: "oklch(0.45 0.05 255)" }}
+            style={{ color: "oklch(0.45 0.05 295)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1, 0] }}
             transition={{ delay: 1.2, duration: 1.2 }}

@@ -35,13 +35,13 @@ export default async function ProductosPage({
     <div>
       {/* Header con gradiente */}
       <div className="relative overflow-hidden py-12 sm:py-16"
-        style={{ background: "oklch(0.11 0.018 255 / 0.8)" }}>
+        style={{ background: "oklch(0.11 0.018 295 / 0.8)" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, oklch(0.52 0.20 255 / 0.3), transparent)" }} />
+            style={{ background: "linear-gradient(90deg, transparent, oklch(0.52 0.20 295 / 0.3), transparent)" }} />
           <div className="absolute bottom-0 left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, oklch(0.52 0.20 255 / 0.15), transparent)" }} />
-          <div style={{ background: "radial-gradient(ellipse 60% 80% at 10% 50%, oklch(0.52 0.20 255 / 0.07) 0%, transparent 70%)" }}
+            style={{ background: "linear-gradient(90deg, transparent, oklch(0.52 0.20 295 / 0.15), transparent)" }} />
+          <div style={{ background: "radial-gradient(ellipse 60% 80% at 10% 50%, oklch(0.52 0.20 295 / 0.07) 0%, transparent 70%)" }}
             className="absolute inset-0" />
         </div>
         <div className="relative container mx-auto px-4">
@@ -78,11 +78,11 @@ export default async function ProductosPage({
                 : "text-muted-foreground hover:text-foreground"
             }`}
             style={!categoria ? {
-              background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))",
-              boxShadow: "0 4px 12px oklch(0.52 0.20 255 / 0.35)",
+              background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))",
+              boxShadow: "0 4px 12px oklch(0.52 0.20 295 / 0.35)",
             } : {
-              background: "oklch(0.52 0.20 255 / 0.08)",
-              border: "1px solid oklch(0.52 0.20 255 / 0.15)",
+              background: "oklch(0.52 0.20 295 / 0.08)",
+              border: "1px solid oklch(0.52 0.20 295 / 0.15)",
             }}
           >
             Todos
@@ -97,11 +97,11 @@ export default async function ProductosPage({
                   : "text-muted-foreground hover:text-foreground"
               }`}
               style={categoria === cat.slug ? {
-                background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))",
-                boxShadow: "0 4px 12px oklch(0.52 0.20 255 / 0.35)",
+                background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))",
+                boxShadow: "0 4px 12px oklch(0.52 0.20 295 / 0.35)",
               } : {
-                background: "oklch(0.52 0.20 255 / 0.08)",
-                border: "1px solid oklch(0.52 0.20 255 / 0.15)",
+                background: "oklch(0.52 0.20 295 / 0.08)",
+                border: "1px solid oklch(0.52 0.20 295 / 0.15)",
               }}
             >
               {cat.nombre}
@@ -119,14 +119,14 @@ export default async function ProductosPage({
         ) : (
           <div className="flex flex-col items-center justify-center py-28 text-center">
             <div className="flex h-20 w-20 items-center justify-center rounded-3xl mb-6"
-              style={{ background: "oklch(0.52 0.20 255 / 0.10)", border: "1px solid oklch(0.52 0.20 255 / 0.15)" }}>
-              <Package className="h-9 w-9" style={{ color: "oklch(0.64 0.17 255)" }} />
+              style={{ background: "oklch(0.52 0.20 295 / 0.10)", border: "1px solid oklch(0.52 0.20 295 / 0.15)" }}>
+              <Package className="h-9 w-9" style={{ color: "oklch(0.64 0.17 295)" }} />
             </div>
             <p className="text-xl font-semibold mb-2">Sin productos aquí aún</p>
             <p className="text-muted-foreground mb-6">No hay productos en esta categoría.</p>
             <Link href="/productos"
               className="px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-all hover:scale-105"
-              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))" }}>
+              style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 295), oklch(0.60 0.18 295))" }}>
               Ver todos los productos
             </Link>
           </div>
