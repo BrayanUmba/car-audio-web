@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 
 function formatPrecio(precio: number) {
@@ -38,7 +39,7 @@ export default function CarritoPage() {
         </p>
         <Link
           href="/productos"
-          className={`${buttonVariants({ size: "lg" })} bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white px-8 h-12 font-semibold shadow-lg shadow-red-500/25`}
+          className={`${buttonVariants({ size: "lg" })} bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 border-0 text-white px-8 h-12 font-semibold shadow-lg shadow-blue-600/25`}
         >
           Ver productos
           <ArrowRight className="ml-2 h-5 w-5" />
@@ -64,9 +65,11 @@ export default function CarritoPage() {
               <CardContent className="flex items-center gap-4 p-4">
                 <div className="h-20 w-20 rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] overflow-hidden shrink-0">
                   {item.producto.imagenes?.[0] ? (
-                    <img
+                    <Image
                       src={item.producto.imagenes[0]}
                       alt={item.producto.nombre}
+                      width={80}
+                      height={80}
                       className="h-full w-full object-cover"
                     />
                   ) : (
@@ -164,7 +167,7 @@ export default function CarritoPage() {
             </div>
             <Link
               href="/checkout"
-              className={`${buttonVariants({ size: "lg" })} w-full h-12 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white font-semibold shadow-lg shadow-red-500/25`}
+              className={`${buttonVariants({ size: "lg" })} w-full h-12 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 border-0 text-white font-semibold shadow-lg shadow-blue-600/25`}
             >
               Proceder al pago
               <ArrowRight className="ml-2 h-5 w-5" />

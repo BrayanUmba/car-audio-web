@@ -2,216 +2,221 @@
 
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Volume2,
-  Headphones,
-  Speaker,
-  Radio,
-  Truck,
-  Shield,
-  Wrench,
-  Star,
-  ArrowRight,
-  Zap,
+  Volume2, Headphones, Speaker, Radio, Truck,
+  Shield, Wrench, Star, ArrowRight, Zap, ChevronRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const categorias = [
-  {
-    nombre: "Parlantes",
-    slug: "parlantes",
-    icon: Volume2,
-    descripcion: "Sonido cristalino",
-    color: "from-red-500 to-orange-500",
-  },
-  {
-    nombre: "Amplificadores",
-    slug: "amplificadores",
-    icon: Zap,
-    descripcion: "Potencia máxima",
-    color: "from-orange-500 to-yellow-500",
-  },
-  {
-    nombre: "Subwoofers",
-    slug: "subwoofers",
-    icon: Speaker,
-    descripcion: "Bajos profundos",
-    color: "from-red-600 to-red-400",
-  },
-  {
-    nombre: "Radios",
-    slug: "radios",
-    icon: Radio,
-    descripcion: "Multimedia total",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    nombre: "Accesorios",
-    slug: "accesorios",
-    icon: Headphones,
-    descripcion: "Complementos pro",
-    color: "from-blue-500 to-cyan-500",
-  },
+  { nombre: "Parlantes",      slug: "parlantes",      icon: Volume2,    descripcion: "Sonido cristalino",  color: "from-blue-500 to-blue-700",    glow: "oklch(0.52 0.20 255 / 0.25)" },
+  { nombre: "Amplificadores", slug: "amplificadores", icon: Zap,        descripcion: "Potencia máxima",    color: "from-blue-600 to-indigo-700",  glow: "oklch(0.45 0.20 280 / 0.25)" },
+  { nombre: "Subwoofers",     slug: "subwoofers",     icon: Speaker,    descripcion: "Bajos profundos",    color: "from-indigo-500 to-blue-600",  glow: "oklch(0.50 0.18 265 / 0.25)" },
+  { nombre: "Radios",         slug: "radios",         icon: Radio,      descripcion: "Multimedia total",   color: "from-sky-500 to-blue-600",     glow: "oklch(0.60 0.16 240 / 0.25)" },
+  { nombre: "Accesorios",     slug: "accesorios",     icon: Headphones, descripcion: "Complementos pro",   color: "from-blue-400 to-cyan-500",    glow: "oklch(0.65 0.14 220 / 0.25)" },
 ];
 
 const beneficios = [
-  {
-    icon: Truck,
-    titulo: "Envío gratis",
-    desc: "En compras superiores a $200.000",
-  },
-  {
-    icon: Shield,
-    titulo: "Garantía total",
-    desc: "Todos los productos con garantía",
-  },
-  {
-    icon: Wrench,
-    titulo: "Instalación",
-    desc: "Servicio profesional de instalación",
-  },
-  {
-    icon: Star,
-    titulo: "Calidad premium",
-    desc: "Solo las mejores marcas del mercado",
-  },
+  { icon: Truck,  titulo: "Envío gratis",    desc: "En compras superiores a $200.000",        num: "01" },
+  { icon: Shield, titulo: "Garantía total",  desc: "Todos los productos con garantía",         num: "02" },
+  { icon: Wrench, titulo: "Instalación",     desc: "Servicio profesional de instalación",      num: "03" },
+  { icon: Star,   titulo: "Calidad premium", desc: "Solo las mejores marcas del mercado",      num: "04" },
 ];
+
+const BARS = [0.4, 0.7, 1, 0.55, 0.85, 0.45, 0.95, 0.6, 0.75, 0.5, 0.9, 0.35, 0.8, 0.65, 0.5];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const },
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" as const },
   }),
 };
 
 export default function HomePage() {
   return (
-    <div>
-      {/* HERO */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        {/* Fondo con gradientes */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-red-500/10 blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-orange-500/10 blur-[120px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-red-600/5 blur-[80px]" />
+    <div className="overflow-x-hidden">
+
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="relative min-h-[90vh] flex items-center py-20 lg:py-0">
+        {/* Fondo */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 h-full w-full"
+            style={{ background: "radial-gradient(ellipse 80% 60% at 20% 50%, oklch(0.52 0.20 255 / 0.10) 0%, transparent 60%)" }} />
+          <div className="absolute top-0 right-0 h-full w-full"
+            style={{ background: "radial-gradient(ellipse 60% 50% at 80% 30%, oklch(0.64 0.17 255 / 0.07) 0%, transparent 55%)" }} />
+          {/* Grid */}
+          <div className="absolute inset-0 opacity-[0.025]"
+            style={{ backgroundImage: "linear-gradient(oklch(0.64 0.17 255) 1px, transparent 1px), linear-gradient(90deg, oklch(0.64 0.17 255) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
 
         <div className="relative container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col items-center text-center max-w-4xl mx-auto"
-          >
-            <Badge className="mb-6 px-4 py-1.5 bg-white/5 border-white/10 text-sm">
-              <Zap className="h-3.5 w-3.5 mr-1.5 text-orange-400" />
-              Nuevos productos disponibles
-            </Badge>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-              Lleva tu{" "}
-              <span className="text-gradient">sonido</span>
-              <br />
-              al siguiente nivel
-            </h1>
+            {/* Texto izquierdo */}
+            <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
+              <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                <Badge className="mb-6 px-4 py-1.5 gap-1.5 text-sm font-medium"
+                  style={{ background: "oklch(0.52 0.20 255 / 0.12)", border: "1px solid oklch(0.52 0.20 255 / 0.25)", color: "oklch(0.72 0.14 255)" }}>
+                  <Zap className="h-3.5 w-3.5" />
+                  Nuevos productos disponibles
+                </Badge>
+              </motion.div>
 
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              Parlantes, amplificadores, subwoofers y radios de las mejores
-              marcas. Audio profesional para tu vehículo con instalación experta.
-            </p>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
+                Lleva tu{" "}
+                <span style={{
+                  background: "linear-gradient(135deg, oklch(0.64 0.17 255), oklch(0.75 0.12 215))",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                }}>sonido</span>
+                <br />al siguiente nivel
+              </h1>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/productos"
-                className={`${buttonVariants({ size: "lg" })} bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white px-8 h-12 text-base font-semibold shadow-lg shadow-red-500/25`}
-              >
-                Ver catálogo
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="#categorias"
-                className={`${buttonVariants({ variant: "outline", size: "lg" })} h-12 px-8 text-base border-white/10 hover:bg-white/5`}
-              >
-                Explorar categorías
-              </Link>
-            </div>
+              <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed">
+                Parlantes, amplificadores, subwoofers y radios de las mejores marcas.
+                Audio profesional con instalación experta.
+              </p>
 
-            {/* Stats */}
-            <div className="mt-16 grid grid-cols-3 gap-8 sm:gap-16">
-              {[
-                { valor: "500+", label: "Productos" },
-                { valor: "2,000+", label: "Clientes felices" },
-                { valor: "5", label: "Años de experiencia" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-3xl sm:text-4xl font-black text-gradient">
-                    {stat.valor}
-                  </p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {stat.label}
-                  </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                <Link href="/productos"
+                  className={`${buttonVariants({ size: "lg" })} border-0 text-white px-8 h-12 text-base font-semibold shadow-lg`}
+                  style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))", boxShadow: "0 4px 24px oklch(0.52 0.20 255 / 0.40)" }}>
+                  Ver catálogo <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link href="#categorias"
+                  className={`${buttonVariants({ variant: "outline", size: "lg" })} h-12 px-8 text-base`}
+                  style={{ borderColor: "oklch(0.52 0.20 255 / 0.30)", background: "oklch(0.52 0.20 255 / 0.05)" }}>
+                  Explorar categorías
+                </Link>
+              </div>
+
+              {/* Stats */}
+              <div className="mt-14 flex gap-8">
+                {[
+                  { valor: "500+",   label: "Productos" },
+                  { valor: "2K+",    label: "Clientes" },
+                  { valor: "5 años", label: "Experiencia" },
+                ].map((stat, i) => (
+                  <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.1 }}>
+                    <p className="text-2xl sm:text-3xl font-black"
+                      style={{ background: "linear-gradient(135deg, oklch(0.64 0.17 255), oklch(0.75 0.12 215))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                      {stat.valor}
+                    </p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Visual derecho — ecualizador 3D */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden lg:flex items-center justify-center"
+            >
+              <div className="relative w-[420px] h-[420px] flex items-center justify-center">
+                {/* Anillos */}
+                {[1, 0.75, 0.5].map((s, i) => (
+                  <motion.div key={i}
+                    className="absolute rounded-full border"
+                    style={{
+                      width: `${420 * s}px`, height: `${420 * s}px`,
+                      borderColor: `oklch(0.52 0.20 255 / ${0.08 + i * 0.04})`,
+                      background: i === 2 ? "oklch(0.52 0.20 255 / 0.03)" : "transparent",
+                    }}
+                    animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
+                    transition={{ duration: 20 + i * 8, repeat: Infinity, ease: "linear" }}
+                  />
+                ))}
+
+                {/* Ecualizador central */}
+                <div className="relative z-10 rounded-3xl p-10 flex flex-col items-center gap-6"
+                  style={{ background: "oklch(0.12 0.02 255 / 0.8)", backdropFilter: "blur(20px)", border: "1px solid oklch(1 0 0 / 0.07)", boxShadow: "0 0 80px oklch(0.52 0.20 255 / 0.20)" }}>
+
+                  {/* Logo */}
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl"
+                    style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.64 0.17 255))", boxShadow: "0 0 40px oklch(0.52 0.20 255 / 0.50)" }}>
+                    <Volume2 className="h-8 w-8 text-white" />
+                  </div>
+
+                  {/* Barras */}
+                  <div className="flex items-end gap-1 h-20">
+                    {BARS.map((h, i) => (
+                      <motion.div key={i}
+                        className="w-2.5 rounded-t"
+                        style={{ background: `linear-gradient(to top, oklch(0.48 0.20 255), oklch(0.70 0.14 220))`, originY: 1 }}
+                        animate={{ scaleY: [h * 0.3, h, h * 0.5, h * 0.9, h * 0.2, h] }}
+                        transition={{ duration: 0.5 + (i % 5) * 0.1, repeat: Infinity, delay: i * 0.05, ease: "easeInOut" }}
+                        initial={{ height: 80 * h }}
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Car Audio Pro</p>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+
+                {/* Puntos orbitando */}
+                {[0, 72, 144, 216, 288].map((deg, i) => (
+                  <motion.div key={i}
+                    className="absolute h-2.5 w-2.5 rounded-full"
+                    style={{
+                      background: `oklch(${0.50 + i * 0.04} 0.18 ${255 - i * 8})`,
+                      top: "50%", left: "50%",
+                      transformOrigin: "0 0",
+                      boxShadow: `0 0 8px oklch(0.52 0.20 255 / 0.6)`,
+                    }}
+                    animate={{ rotate: [deg, deg + 360] }}
+                    transition={{ duration: 12 + i * 2, repeat: Infinity, ease: "linear" }}
+                    initial={{ x: Math.cos(deg * Math.PI / 180) * 180, y: Math.sin(deg * Math.PI / 180) * 180 }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* CATEGORÍAS */}
-      <section id="categorias" className="py-20 sm:py-24">
+      {/* ── CATEGORÍAS ──────────────────────────────────── */}
+      <section id="categorias" className="py-20 sm:py-28">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-12"
-          >
-            <motion.h2
-              variants={fadeUp}
-              custom={0}
-              className="text-3xl sm:text-4xl font-bold"
-            >
-              Explora por categoría
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              custom={1}
-              className="mt-3 text-muted-foreground text-lg"
-            >
-              Encuentra exactamente lo que necesitas
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
+            <motion.p variants={fadeUp} custom={0} className="text-sm font-medium tracking-[0.2em] uppercase mb-3"
+              style={{ color: "oklch(0.64 0.17 255)" }}>
+              Catálogo
+            </motion.p>
+            <motion.h2 variants={fadeUp} custom={1} className="text-3xl sm:text-5xl font-black">Explora por categoría</motion.h2>
+            <motion.p variants={fadeUp} custom={2} className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto">
+              Encuentra exactamente lo que necesitas para tu vehículo
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
             {categorias.map((cat, i) => (
-              <motion.div
-                key={cat.slug}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                variants={fadeUp}
-              >
-                <Link href={`/productos?categoria=${cat.slug}`}>
-                  <Card className="group relative overflow-hidden border-white/5 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="flex flex-col items-center gap-3 p-6 sm:p-8">
-                      <div
-                        className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${cat.color} shadow-lg transition-transform group-hover:scale-110`}
-                      >
-                        <cat.icon className="h-7 w-7 text-white" />
-                      </div>
-                      <h3 className="font-bold text-sm sm:text-base">
-                        {cat.nombre}
-                      </h3>
-                      <p className="text-xs text-muted-foreground">
-                        {cat.descripcion}
-                      </p>
-                    </CardContent>
-                  </Card>
+              <motion.div key={cat.slug} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}>
+                <Link href={`/productos?categoria=${cat.slug}`} className="group block">
+                  <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2"
+                    style={{
+                      background: "oklch(0.13 0.018 255 / 0.7)",
+                      backdropFilter: "blur(12px)",
+                      border: "1px solid oklch(1 0 0 / 0.06)",
+                    }}>
+                    {/* Glow hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
+                      style={{ background: `radial-gradient(circle at 50% 0%, ${cat.glow} 0%, transparent 70%)` }} />
+                    {/* Border glow */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
+                      style={{ boxShadow: `inset 0 1px 0 ${cat.glow}` }} />
+
+                    <div className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${cat.color} shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl`}
+                      style={{ boxShadow: `0 8px 20px ${cat.glow}` }}>
+                      <cat.icon className="h-7 w-7 text-white" />
+                    </div>
+                    <div className="relative z-10 text-center">
+                      <h3 className="font-bold text-sm sm:text-base">{cat.nombre}</h3>
+                      <p className="text-xs text-muted-foreground mt-1">{cat.descripcion}</p>
+                    </div>
+                    <ChevronRight className="relative z-10 h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                 </Link>
               </motion.div>
             ))}
@@ -219,100 +224,113 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BANNER DESTACADO */}
-      <section className="py-20">
+      {/* ── BANNER OFERTA ───────────────────────────────── */}
+      <section className="py-8">
         <div className="container mx-auto px-4">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 via-red-500 to-orange-500 p-8 sm:p-12 lg:p-16">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9zdmc+')] opacity-30" />
-            <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div className="text-white text-center lg:text-left">
-                <Badge className="mb-4 bg-white/20 text-white border-0">
-                  Oferta especial
-                </Badge>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black">
-                  Hasta 30% OFF
-                </h2>
-                <p className="mt-3 text-white/80 text-lg max-w-md">
-                  En toda nuestra línea de amplificadores. Potencia tu sonido a
-                  precio increíble.
-                </p>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <div className="relative overflow-hidden rounded-3xl p-8 sm:p-12 lg:p-16"
+              style={{ background: "linear-gradient(135deg, oklch(0.25 0.15 255), oklch(0.42 0.20 255) 50%, oklch(0.32 0.18 265))" }}>
+              {/* Efectos */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 right-0 h-full w-1/2"
+                  style={{ background: "radial-gradient(ellipse 80% 80% at 80% 50%, oklch(0.70 0.12 215 / 0.25) 0%, transparent 60%)" }} />
+                <div className="absolute inset-0 opacity-[0.04]"
+                  style={{ backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+                {/* Ecualizador decorativo */}
+                <div className="absolute right-8 bottom-0 flex items-end gap-1 opacity-20">
+                  {[0.4, 0.8, 0.6, 1, 0.7, 0.5, 0.9].map((h, i) => (
+                    <div key={i} className="w-3 rounded-t bg-white" style={{ height: `${h * 80}px` }} />
+                  ))}
+                </div>
               </div>
-              <Link
-                href="/productos?categoria=amplificadores"
-                className="inline-flex h-12 items-center gap-2 rounded-xl bg-white px-8 font-bold text-red-600 shadow-xl hover:bg-white/90 transition-colors"
-              >
-                Comprar ahora
-                <ArrowRight className="h-5 w-5" />
-              </Link>
+
+              <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="text-white text-center lg:text-left">
+                  <span className="inline-block mb-4 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase"
+                    style={{ background: "oklch(1 0 0 / 0.15)", border: "1px solid oklch(1 0 0 / 0.2)" }}>
+                    Oferta especial
+                  </span>
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black">Hasta 30% OFF</h2>
+                  <p className="mt-3 text-white/75 text-lg max-w-md">En toda nuestra línea de amplificadores. Tiempo limitado.</p>
+                </div>
+                <Link href="/productos?categoria=amplificadores"
+                  className="shrink-0 inline-flex h-14 items-center gap-2 rounded-2xl bg-white px-10 font-bold text-lg shadow-2xl hover:bg-white/90 transition-all hover:scale-105"
+                  style={{ color: "oklch(0.36 0.18 255)" }}>
+                  Comprar ahora <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* BENEFICIOS */}
-      <section className="py-20 sm:py-24">
+      {/* ── BENEFICIOS ──────────────────────────────────── */}
+      <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
+            <motion.p variants={fadeUp} custom={0} className="text-sm font-medium tracking-[0.2em] uppercase mb-3"
+              style={{ color: "oklch(0.64 0.17 255)" }}>
+              Por qué elegirnos
+            </motion.p>
+            <motion.h2 variants={fadeUp} custom={1} className="text-3xl sm:text-5xl font-black">Todo incluido</motion.h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {beneficios.map((b, i) => (
-              <motion.div
-                key={b.titulo}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                variants={fadeUp}
-              >
-                <Card className="border-white/5 bg-white/[0.03] hover:bg-white/[0.06] transition-all">
-                  <CardContent className="flex items-start gap-4 p-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-500/20 to-orange-500/20">
-                      <b.icon className="h-5 w-5 text-orange-400" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold">{b.titulo}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {b.desc}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
+              <motion.div key={b.titulo} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}>
+                <div className="group relative overflow-hidden rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    background: "oklch(0.13 0.018 255 / 0.6)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid oklch(1 0 0 / 0.06)",
+                  }}>
+                  <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.6), transparent)" }} />
+
+                  <span className="text-5xl font-black opacity-[0.06] absolute top-4 right-5 select-none">{b.num}</span>
+
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl mb-5"
+                    style={{ background: "oklch(0.52 0.20 255 / 0.15)", border: "1px solid oklch(0.52 0.20 255 / 0.20)" }}>
+                    <b.icon className="h-5 w-5" style={{ color: "oklch(0.64 0.17 255)" }} />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">{b.titulo}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="py-20 sm:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.h2
-              variants={fadeUp}
-              custom={0}
-              className="text-3xl sm:text-4xl font-bold"
-            >
-              ¿Listo para mejorar tu sonido?
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              custom={1}
-              className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto"
-            >
-              Explora nuestro catálogo completo y encuentra el equipo perfecto
-              para tu vehículo.
-            </motion.p>
-            <motion.div variants={fadeUp} custom={2} className="mt-8">
-              <Link
-                href="/productos"
-                className={`${buttonVariants({ size: "lg" })} bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 border-0 text-white px-10 h-12 text-base font-semibold shadow-lg shadow-red-500/25`}
-              >
-                Ver todos los productos
-                <ArrowRight className="ml-2 h-5 w-5" />
+      {/* ── CTA FINAL ───────────────────────────────────── */}
+      <section className="py-20 sm:py-28">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+            className="relative overflow-hidden rounded-3xl text-center py-20 px-6"
+            style={{ background: "oklch(0.13 0.018 255 / 0.7)", backdropFilter: "blur(20px)", border: "1px solid oklch(1 0 0 / 0.06)" }}>
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute inset-0"
+                style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, oklch(0.52 0.20 255 / 0.08) 0%, transparent 70%)" }} />
+              <div className="absolute top-0 left-0 right-0 h-px"
+                style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.5), transparent)" }} />
+              <div className="absolute bottom-0 left-0 right-0 h-px"
+                style={{ background: "linear-gradient(90deg, transparent, oklch(0.64 0.17 255 / 0.3), transparent)" }} />
+            </div>
+            <div className="relative">
+              <p className="text-sm font-medium tracking-[0.2em] uppercase mb-4"
+                style={{ color: "oklch(0.64 0.17 255)" }}>
+                Empieza hoy
+              </p>
+              <h2 className="text-3xl sm:text-5xl font-black mb-4">¿Listo para mejorar tu sonido?</h2>
+              <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-10">
+                Explora nuestro catálogo completo y encuentra el equipo perfecto para tu vehículo.
+              </p>
+              <Link href="/productos"
+                className={`${buttonVariants({ size: "lg" })} border-0 text-white px-12 h-14 text-base font-semibold`}
+                style={{ background: "linear-gradient(135deg, oklch(0.48 0.20 255), oklch(0.60 0.18 255))", boxShadow: "0 4px 32px oklch(0.52 0.20 255 / 0.45)" }}>
+                Ver todos los productos <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

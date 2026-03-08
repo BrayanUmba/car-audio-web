@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { AgregarCarritoBtn } from "@/components/tienda/agregar-carrito-btn";
 import { Truck, Shield, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 function formatPrecio(precio: number) {
   return new Intl.NumberFormat("es-CO", {
@@ -51,10 +52,13 @@ export default async function ProductoDetallePage({
         {/* Imagen */}
         <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] overflow-hidden relative">
           {producto.imagenes?.[0] ? (
-            <img
+            <Image
               src={producto.imagenes[0]}
               alt={producto.nombre}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
           ) : (
             <div className="flex h-full items-center justify-center text-muted-foreground">
@@ -62,7 +66,7 @@ export default async function ProductoDetallePage({
             </div>
           )}
           {descuento > 0 && (
-            <Badge className="absolute top-4 left-4 bg-gradient-to-r from-red-500 to-orange-500 border-0 text-white font-bold text-sm px-3 py-1 shadow-lg">
+            <Badge className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-blue-500 border-0 text-white font-bold text-sm px-3 py-1 shadow-lg">
               -{descuento}% OFF
             </Badge>
           )}
@@ -129,14 +133,14 @@ export default async function ProductoDetallePage({
           {/* Beneficios */}
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div className="flex items-center gap-3 rounded-xl bg-white/[0.03] p-3">
-              <Truck className="h-5 w-5 text-orange-400 shrink-0" />
+              <Truck className="h-5 w-5 text-blue-400 shrink-0" />
               <div>
                 <p className="text-sm font-medium">Envío rápido</p>
                 <p className="text-xs text-muted-foreground">2-5 días hábiles</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-white/[0.03] p-3">
-              <Shield className="h-5 w-5 text-orange-400 shrink-0" />
+              <Shield className="h-5 w-5 text-blue-400 shrink-0" />
               <div>
                 <p className="text-sm font-medium">Garantía</p>
                 <p className="text-xs text-muted-foreground">1 año de garantía</p>
