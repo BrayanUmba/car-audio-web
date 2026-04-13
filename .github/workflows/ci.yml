@@ -26,10 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Descargar codigo"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Configurar Node.js"
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -57,10 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Descargar codigo"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Configurar Node.js"
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Descargar codigo con historial completo"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -98,7 +98,7 @@ jobs:
       image: semgrep/semgrep
     steps:
       - name: "Descargar codigo"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Ejecutar Semgrep"
         run: semgrep scan --config auto --error --sarif --output semgrep-results.sarif ./src
@@ -106,7 +106,7 @@ jobs:
           SEMGREP_APP_TOKEN: ""
 
       - name: "Subir resultados SARIF"
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         if: always()
         with:
           sarif_file: semgrep-results.sarif
